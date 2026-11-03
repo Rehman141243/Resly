@@ -1,31 +1,5 @@
 
 
-// // // // import "./global.css";
-// // // // import { SafeAreaProvider } from "react-native-safe-area-context";
-// // // // import { AuthProvider } from "./src/context/AuthContext";
-// // // // import RootNavigator from "./src/roots/rootnavigation";
-// // // // import { ToastProvider } from "./src/context/ToastContext";
-// // // // import { useThemeBootstrap } from "./src/context/ThemeContext";
-// // // // import { TemplateAccessProvider } from "./src/context/templateaccescontext";
-
-// // // // function App() {
-// // // //   useThemeBootstrap();
-// // // //   return (
-// // // //     <SafeAreaProvider>
-// // // //       <ToastProvider>
-// // // //         <AuthProvider>
-// // // //           <TemplateAccessProvider>
-// // // //             <RootNavigator />
-// // // //           </TemplateAccessProvider>
-// // // //         </AuthProvider>
-// // // //       </ToastProvider>
-// // // //     </SafeAreaProvider>
-// // // //   );
-// // // // }
-
-// // // // export default App;
-
-
 // // // import "./global.css";
 // // // import { SafeAreaProvider } from "react-native-safe-area-context";
 // // // import { AuthProvider } from "./src/context/AuthContext";
