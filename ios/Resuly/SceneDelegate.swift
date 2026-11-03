@@ -32,19 +32,19 @@ class SceneDelegate: RCTDefaultReactNativeFactoryDelegate, UIWindowSceneDelegate
     reactNativeFactory?.startReactNative(
       withModuleName: "Resuly",
       in: window,
-      connectionOptions: connectionOptions
+//      connectionOptions: connectionOptions
     )
 
    
   }
 
-  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-    RCTLinkingManager.scene(scene, openURLContexts: URLContexts)
-  }
-
-  func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-    RCTLinkingManager.scene(scene, continue: userActivity)
-  }
+//  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+//    RCTLinkingManager.scene(scene, openURLContexts: URLContexts)
+//  }
+//
+//  func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+//    RCTLinkingManager.scene(scene, continue: userActivity)
+//  }
 
   override func bundleURL() -> URL? {
     #if DEBUG

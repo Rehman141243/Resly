@@ -1,45 +1,180 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+// // // // import "./global.css";
+// // // // import { SafeAreaProvider } from "react-native-safe-area-context";
+// // // // import { AuthProvider } from "./src/context/AuthContext";
+// // // // import RootNavigator from "./src/roots/rootnavigation";
+// // // // import { ToastProvider } from "./src/context/ToastContext";
+// // // // import { useThemeBootstrap } from "./src/context/ThemeContext";
+// // // // import { TemplateAccessProvider } from "./src/context/templateaccescontext";
+
+// // // // function App() {
+// // // //   useThemeBootstrap();
+// // // //   return (
+// // // //     <SafeAreaProvider>
+// // // //       <ToastProvider>
+// // // //         <AuthProvider>
+// // // //           <TemplateAccessProvider>
+// // // //             <RootNavigator />
+// // // //           </TemplateAccessProvider>
+// // // //         </AuthProvider>
+// // // //       </ToastProvider>
+// // // //     </SafeAreaProvider>
+// // // //   );
+// // // // }
+
+// // // // export default App;
+
+
+// // // import "./global.css";
+// // // import { SafeAreaProvider } from "react-native-safe-area-context";
+// // // import { AuthProvider } from "./src/context/AuthContext";
+// // // import RootNavigator from "./src/roots/rootnavigation";
+// // // import { ToastProvider } from "./src/context/ToastContext";
+// // // import { useThemeBootstrap } from "./src/context/ThemeContext";
+
+// // // function App() {
+// // //   useThemeBootstrap();
+// // //   return (
+// // //     <SafeAreaProvider>
+// // //       <ToastProvider>
+// // //         <AuthProvider>
+// // //           {/* <PremiumProvider> */}
+// // //             <RootNavigator />
+// // //           {/* </PremiumProvider> */}
+// // //         </AuthProvider>
+// // //       </ToastProvider>
+// // //     </SafeAreaProvider>
+// // //   );
+// // // }
+
+// // // export default App;
+
+
+// // import React, { useEffect } from "react";
+
+// // import "./global.css";
+
+// // import { SafeAreaProvider } from
+// //   "react-native-safe-area-context";
+
+// // import { AuthProvider } from
+// //   "./src/context/AuthContext";
+
+// // import RootNavigator from
+// //   "./src/roots/rootnavigation";
+
+// // import { ToastProvider } from
+// //   "./src/context/ToastContext";
+
+// // import { useThemeBootstrap } from
+// //   "./src/context/ThemeContext";
+// // import { initAds } from "./src/utils/rewardads";
+
+// // function App() {
+// //   useThemeBootstrap();
+
+// //   useEffect(() => {
+// //     initAds().catch(error => {
+// //       console.warn("Ad initialization error:", error);
+// //     });
+// //   }, []);
+
+// //   return (
+// //     <SafeAreaProvider>
+// //       <ToastProvider>
+// //         <AuthProvider>
+// //           <RootNavigator />
+// //         </AuthProvider>
+// //       </ToastProvider>
+// //     </SafeAreaProvider>
+// //   );
+// // }
+
+// // export default App;
+
+
+
+// import React, { useEffect } from "react";
+// import "./global.css";
+
+// import { SafeAreaProvider } from "react-native-safe-area-context";
+// import { AuthProvider } from "./src/context/AuthContext";
+// import RootNavigator from "./src/roots/rootnavigation";
+// import { ToastProvider } from "./src/context/ToastContext";
+// import { useThemeBootstrap } from "./src/context/ThemeContext";
+// import { TemplateAccessProvider } from "./src/context/templateaccescontext";
+// import { initAds } from "./src/utils/rewardads";
+
+// function App() {
+//   useThemeBootstrap();
+
+//   useEffect(() => {
+//     let mounted = true;
+
+//     const initializeAds = async () => {
+//       try {
+//         const initialized = await initAds();
+
+//         if (mounted) {
+//           console.log(
+//             initialized
+//               ? "[AdMob] Ready"
+//               : "[AdMob] Ads are not available yet"
+//           );
+//         }
+//       } catch (error) {
+//         console.warn("[AdMob] Initialization error:", error);
+//       }
+//     };
+
+//     initializeAds();
+
+//     return () => {
+//       mounted = false;
+//     };
+//   }, []);
+
+//   return (
+//     <SafeAreaProvider>
+//       <ToastProvider>
+//         <AuthProvider>
+//           <TemplateAccessProvider>
+//             <RootNavigator />
+//           </TemplateAccessProvider>
+//         </AuthProvider>
+//       </ToastProvider>
+//     </SafeAreaProvider>
+//   );
+// }
+
+// export default App;
+
+
+import { useEffect } from "react";
+import "./global.css";
+
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { AuthProvider } from "./src/context/AuthContext";
+import { ToastProvider } from "./src/context/ToastContext";
+import { useThemeBootstrap } from "./src/context/ThemeContext";
+import RootNavigator from "./src/navigation/RootNavigator";
+import { initAds } from "./src/services/rewardedAds";
+
+export default function App() {
+  useThemeBootstrap();
+
+  useEffect(() => {
+    initAds().catch(() => {});
+  }, []);
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
+      <ToastProvider>
+        <AuthProvider>
+          <RootNavigator />
+        </AuthProvider>
+      </ToastProvider>
     </SafeAreaProvider>
   );
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-export default App;
